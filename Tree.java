@@ -5,24 +5,36 @@ public class Tree {
     protected static Color TRUNK_COLOR = new Color(102, 51, 0);
 
     private double heightFt;
-    private double trunkDiameterIn;
+    private double trunkDiameterInches;
     private TreeType treeType; // TreeType is an enum
 
     // Add the constructor here
     public Tree(double heightFt, double trunkDiameterIn, TreeType treeType) {
         this.heightFt = heightFt;
-        this.trunkDiameterIn = trunkDiameterIn;
+        this.trunkDiameterInches = trunkDiameterIn;
         this.treeType = treeType;
     }
 
     // Add the grow method here
     public void grow() {
         this.heightFt += 9;
-        this.trunkDiameterIn += 1;
+        this.trunkDiameterInches += 1;
     }
 
-    public static void announceTreeColor(){
+    public static void getTreeColor(){
         System.out.println("Tree color is "+TRUNK_COLOR+".");
+    }
+
+    public double getHeightFt() {
+        return this.heightFt;
+    }
+
+    public double getTrunkDiameterInches() {
+        return this.trunkDiameterInches;
+    }
+
+    public TreeType getTreeType() {
+        return this.treeType;
     }
 
     // Add the announceTallTree method here
