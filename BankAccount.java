@@ -2,9 +2,9 @@ public class BankAccount {
     private String owner;
     private double balance;
 
-    public BankAccount(String owner, double balance) {
+    public BankAccount(String owner, double startingBalance) {
         this.owner = owner;
-        this.balance = balance;
+        this.balance = Math.max(startingBalance, 0);
     }
 
     public void deposit(double amount) {
