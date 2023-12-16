@@ -4,5 +4,6 @@ public enum TreeType {
     PINE,
     BIRCH,
     CHERRY,
-    WALNUT
+    WALNUT,
+    ROSEWOOD
 }

@@ -10,7 +10,7 @@ public class Tree {
     }
 
     void grow() {
-        this.heightFt += 10;
+        this.heightFt += 9;
         this.trunkDiameterIn += 1;
     }
 }
