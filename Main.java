@@ -1,14 +1,16 @@
+import java.awt.Color;
 public class Main {
     public static void main(String[] args) {
         
-        // Create two Tree objects
-        Tree tree1 = new Tree(120, 12, TreeType.OAK);
-        Tree tree2 = new Tree(80, 8, TreeType.MAPLE);
+        Color myTrunkColor = new Color(102, 51, 0); // used constructor of Color class
+        Color myDefaultWhite = Color.WHITE; // used static attribute of Color class
+        Color myDefaultBlue = Color.BLUE; // used static attribute of Color class
 
-        // call the announceTallTree method on each Tree object
-        tree1.announceTallTree();
-        tree2.announceTallTree();
+        Color brightBlue = myDefaultBlue.brighter(); // used instance method of Color class
 
-        Tree.announceTreeColor();
+        System.out.println("My trunk color is "+myTrunkColor+".");
+        System.out.println("My default white color is "+myDefaultWhite+".");
+        System.out.println("My default blue color is "+myDefaultBlue+".");
+        System.out.println("My bright blue color is "+brightBlue+".");
     }
 }
