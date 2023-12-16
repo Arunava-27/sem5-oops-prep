@@ -8,5 +8,7 @@ public class Main {
         // call the announceTallTree method on each Tree object
         tree1.announceTallTree();
         tree2.announceTallTree();
+
+        Tree.announceTreeColor();
     }
 }

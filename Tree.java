@@ -1,9 +1,11 @@
+import java.awt.*;
 public class Tree {
 
     // Add the instance variables here
     double heightFt;
     double trunkDiameterIn;
     TreeType treeType; // TreeType is an enum
+    static Color TRUNK_COLOR = new Color(102, 51, 0);
 
     // Add the constructor here
     public Tree(double heightFt, double trunkDiameterIn, TreeType treeType) {
@@ -16,6 +18,10 @@ public class Tree {
     void grow() {
         this.heightFt += 9;
         this.trunkDiameterIn += 1;
+    }
+
+    static void announceTreeColor(){
+        System.out.println("Tree color is "+TRUNK_COLOR+".");
     }
 
     // Add the announceTallTree method here
