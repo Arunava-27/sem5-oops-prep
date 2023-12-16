@@ -1,16 +1,42 @@
-import java.awt.Color;
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
+
+        Employee[] employees;
+        int numberOfEmployees;
         
-        Color myTrunkColor = new Color(102, 51, 0); // used constructor of Color class
-        Color myDefaultWhite = Color.WHITE; // used static attribute of Color class
-        Color myDefaultBlue = Color.BLUE; // used static attribute of Color class
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Enter the number of employees: ");
+            numberOfEmployees = scanner.nextInt();
+            employees = new Employee[numberOfEmployees];
+            for (int i = 0; i < numberOfEmployees; i++) {
+                System.out.println("\n\n------------------------------Enter the details of employee " + (i + 1) + "---------------------------------\n");
+                System.out.print("Enter the name of employee " + (i + 1) + ": ");
+                String name = scanner.next();
+                System.out.print("Enter the age of employee " + (i + 1) + ": ");
+                int age = scanner.nextInt();
+                System.out.print("Enter the salary of employee " + (i + 1) + ": ");
+                double salary = scanner.nextDouble();
+                System.out.print("Enter the location of employee " + (i + 1) + ": ");
+                String location = scanner.next();
+                employees[i] = new Employee(name, age, salary, location);
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return;
+        }
 
-        Color brightBlue = myDefaultBlue.brighter(); // used instance method of Color class
+        for (Employee employee : employees) {
+            employee.print();
+        }
 
-        System.out.println("My trunk color is "+myTrunkColor+".");
-        System.out.println("My default white color is "+myDefaultWhite+".");
-        System.out.println("My default blue color is "+myDefaultBlue+".");
-        System.out.println("My bright blue color is "+brightBlue+".");
+        employees[0].raiseSalary(10);
+
+
+        System.out.println("\n\nAfter raiseSalary() method call\n\n");
+
+        for (Employee employee : employees) {
+            employee.print();
+        }
     }
 }
