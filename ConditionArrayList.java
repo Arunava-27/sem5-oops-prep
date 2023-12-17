@@ -1,12 +1,27 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
+import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
 /**
  * A custom ArrayList implementation that only allows odd integers to be added.
  */
-public class OddArrayList extends ArrayList<Integer> {
+public class ConditionArrayList extends ArrayList<Integer> {
+
+    private Predicate<Integer> condition;
+
+    public ConditionArrayList(Predicate<Integer> predicate, Integer... nums) {
+        super(
+            Arrays.stream(nums)
+            .filter(predicate)
+            .collect(Collectors.toList())
+        );
+
+        this.condition = predicate;
+        
+    }
 
     /**
      * Checks if the given element is odd.
@@ -14,8 +29,8 @@ public class OddArrayList extends ArrayList<Integer> {
      * @param element the element to check
      * @return true if the element is odd, false otherwise
      */
-    public static boolean isOdd(Integer element) {
-        return Math.abs(element) % 2 == 1;
+    public boolean isEligible(Integer element) {
+        return condition.test(element);
     }
     
     /**
@@ -27,7 +42,7 @@ public class OddArrayList extends ArrayList<Integer> {
      */
     @Override
     public void add(int index, Integer element) {
-        if (isOdd(element)) {
+        if (isEligible(element)) {
             super.add(index, element);
         }
     }
@@ -41,7 +56,7 @@ public class OddArrayList extends ArrayList<Integer> {
      */
     @Override
     public boolean add(Integer element) {
-        if (isOdd(element)) {
+        if (isEligible(element)) {
             return super.add(element);
         }
         return false;
@@ -57,7 +72,7 @@ public class OddArrayList extends ArrayList<Integer> {
     @Override
     public boolean addAll(Collection<? extends Integer> c) {
         return super.addAll(
-            c.stream().filter(OddArrayList::isOdd)
+            c.stream().filter(this::isEligible)
             .collect(Collectors.toList()));
     }
 
@@ -71,7 +86,7 @@ public class OddArrayList extends ArrayList<Integer> {
      */
     @Override
     public Integer set(int index, Integer element) {
-        if (isOdd(element)) {
+        if (isEligible(element)) {
             return super.set(index, element);
         } else {
             System.out.println("OddArrayList: " + element + " is not odd.");
@@ -82,7 +97,7 @@ public class OddArrayList extends ArrayList<Integer> {
     @Override
     public void replaceAll(UnaryOperator<Integer> operator) {
         super.replaceAll(operator);
-        super.removeIf(n -> !isOdd(n));
+        super.removeIf(n -> !isEligible(n));
     }
 
 }
