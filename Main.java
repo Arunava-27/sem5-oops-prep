@@ -1,25 +1,17 @@
-import java.util.Stack;
-
 public class Main {
     public static void main(String[] args) {
-        
-        Stack<Character> charStack = new Stack<>();
+        ModArrayList<Integer> listy = new ModArrayList<>();
 
-        charStack.push('a');
-        charStack.push('b');
-        charStack.push('c');
-        charStack.push('d');
+        listy.add(0);
+        listy.add(1);
+        listy.add(2);
+        listy.add(3);
+        listy.add(4);
+        listy.add(5);
+        listy.add(6);
 
-        System.out.println("this is a stack of characters\n");
-        System.out.println("Stack size: " + charStack.size()+"\n");
-        System.out.println(charStack);
-        System.out.println("\nPeek : "+charStack.peek()+"\n");
-
-        System.out.println(charStack.pop());
-        System.out.println(charStack.pop());
-        System.out.println(charStack.pop());
-        System.out.println(charStack.pop());
-
-        System.out.println(charStack);
+        System.out.println(listy.getUsingMod(40));
+        System.out.println(listy.getUsingMod(1));
+        System.out.println(listy.getUsingMod(-2));
     }
 }
